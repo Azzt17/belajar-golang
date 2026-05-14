@@ -23,7 +23,7 @@ func Kasir(ctx context.Context, id int, antrean <-chan int, hasil chan<- string,
 		case pesanan, ok := <-antrean:
 			if !ok {
 				// jika channel di close, ok bernilai false, maka worker tahu bahwa sedang tidak ada request
-				// kemudian masuk dlm keadaan sleep untuk hemat resource memory
+				// kemudian di terminated dan di hapus dari ram
 				fmt.Printf("[LOG] worker %d di nonaktifkan, antrian di tutup.\n", id)
 				return
 			}
@@ -68,7 +68,7 @@ func main() {
 	}
 
 	// menutup input channel: tidak ada request baru yang boleh masuk lagi ke dlm antrian
-	// ini akan membuat worker masuk dlm keadaan sleep
+	// ini akan membuat worker di matikan setelahnya
 	close(antrean)
 
 	// check jumlah goroutine
