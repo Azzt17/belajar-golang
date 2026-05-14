@@ -59,7 +59,7 @@ func main() {
 	// FAN OUT Pattern: menggunakan goroutine dlm jumlah tetap terus menerus
 	for i := 1; i <= jumlahKasir; i++ {
 		wg.Add(1)
-		go Kasir(ctx, 1, antrean, hasil, &wg)
+		go Kasir(ctx, i, antrean, hasil, &wg)
 	}
 
 	// memasukkan pesanan ke dalam channel
