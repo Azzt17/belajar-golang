@@ -56,4 +56,4 @@ func main() {
 	fmt.Printf("[AUDIT] Saldo Akhir di Database: %d\n", dompet.Saldo)
 }
 
-// RUN MENGGUNAKAN "go run -race bad_toctou.go" untuk mendeteksi race condition
+// RUN MENGGUNAKAN "go run -race good_toctou.go" untuk mendeteksi race condition
